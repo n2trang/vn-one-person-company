@@ -1,6 +1,5 @@
 """Final verification — tất cả 6 RULES enforced trong code."""
 import os
-import shutil
 import subprocess
 from pathlib import Path
 
@@ -22,12 +21,9 @@ def test_rule_1_brain_first_in_question_generator():
 
 
 def test_rule_2_no_trade_leakage():
-    """RULE 2: scripts/dev/check-domain-neutral.sh pass."""
-    if shutil.which("bash") is None:
-        import pytest
-        pytest.skip("bash not available")
+    """RULE 2: domain-neutral check pass without bash requirement."""
     result = subprocess.run(
-        ["bash", "scripts/dev/check-domain-neutral.sh"],
+        ["python", "scripts/dev/check_domain_neutral.py"],
         cwd=str(REPO),
         capture_output=True,
         text=True,
