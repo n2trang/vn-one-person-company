@@ -1,9 +1,17 @@
 """Final verification — tất cả 6 RULES enforced trong code."""
+import os
 import shutil
 import subprocess
 from pathlib import Path
 
 REPO = Path(__file__).parent.parent.parent
+
+
+def _utf8_env():
+    env = os.environ.copy()
+    env.setdefault("PYTHONUTF8", "1")
+    env.setdefault("PYTHONIOENCODING", "utf-8")
+    return env
 
 
 def test_rule_1_brain_first_in_question_generator():
@@ -20,7 +28,12 @@ def test_rule_2_no_trade_leakage():
         pytest.skip("bash not available")
     result = subprocess.run(
         ["bash", "scripts/dev/check-domain-neutral.sh"],
-        cwd=str(REPO), capture_output=True,
+        cwd=str(REPO),
+        capture_output=True,
+        text=True,
+        encoding="utf-8",
+        errors="replace",
+        env=_utf8_env(),
     )
     assert result.returncode == 0
 
@@ -65,7 +78,13 @@ def test_192_templates_vendored():
 def test_phase_tags_present():
     """All 6 phases tagged."""
     result = subprocess.run(
-        ["git", "tag"], cwd=str(REPO), capture_output=True, text=True,
+        ["git", "tag"],
+        cwd=str(REPO),
+        capture_output=True,
+        text=True,
+        encoding="utf-8",
+        errors="replace",
+        env=_utf8_env(),
     )
     tags = result.stdout.split()
     for i in range(1, 6):  # Phases 1-5 must be tagged before this test runs

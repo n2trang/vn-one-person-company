@@ -10,6 +10,12 @@ from pathlib import Path
 import click
 from rich.console import Console
 
+for stream in (sys.stdout, sys.stderr):
+    try:
+        stream.reconfigure(encoding="utf-8", errors="replace")
+    except Exception:
+        pass
+
 
 class _ConsoleProxy:
     """Write through the current stdout so Click test runners capture output correctly."""

@@ -1,7 +1,15 @@
 """Smoke tests: all Phase 1 modules import + work."""
+import os
 import subprocess
 import sys
 from pathlib import Path
+
+
+def _utf8_env():
+    env = os.environ.copy()
+    env.setdefault("PYTHONUTF8", "1")
+    env.setdefault("PYTHONIOENCODING", "utf-8")
+    return env
 
 
 def test_import_all():
@@ -13,7 +21,12 @@ def test_cli_status_works():
     fixture = repo / "tests" / "fixtures" / "demo-vault"
     result = subprocess.run(
         [sys.executable, "-m", "core.cli", "status", "--vault", str(fixture)],
-        capture_output=True, text=True, cwd=str(repo)
+        capture_output=True,
+        text=True,
+        encoding="utf-8",
+        errors="replace",
+        cwd=str(repo),
+        env=_utf8_env(),
     )
     assert result.returncode == 0
     assert "Brain loaded" in result.stdout

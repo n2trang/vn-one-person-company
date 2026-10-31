@@ -176,12 +176,17 @@ def execute_cmd(task_folder):
 @click.option("--vault", type=click.Path(), required=True)
 def onboard(vault):
     """Wizard tạo vault mới cho DN."""
+    import os
     import subprocess
     import sys
     from pathlib import Path
     repo = Path(__file__).parent.parent
+    env = os.environ.copy()
+    env.setdefault("PYTHONUTF8", "1")
+    env.setdefault("PYTHONIOENCODING", "utf-8")
     subprocess.run(
-        [sys.executable, str(repo / "scripts" / "onboard.py"), "--vault", vault]
+        [sys.executable, str(repo / "scripts" / "onboard.py"), "--vault", vault],
+        env=env,
     )
 
 

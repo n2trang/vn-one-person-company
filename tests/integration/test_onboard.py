@@ -1,6 +1,14 @@
+import os
 import subprocess
 import sys
 from pathlib import Path
+
+
+def _utf8_env():
+    env = os.environ.copy()
+    env.setdefault("PYTHONUTF8", "1")
+    env.setdefault("PYTHONIOENCODING", "utf-8")
+    return env
 
 
 def test_onboard_creates_valid_vault(tmp_path):
@@ -10,7 +18,11 @@ def test_onboard_creates_valid_vault(tmp_path):
     result = subprocess.run(
         [sys.executable, str(repo / "scripts" / "onboard.py"),
          "--vault", str(vault), "--non-interactive"],
-        capture_output=True, text=True,
+        capture_output=True,
+        text=True,
+        encoding="utf-8",
+        errors="replace",
+        env=_utf8_env(),
     )
 
     assert result.returncode == 0, f"Failed: {result.stderr}"
@@ -30,7 +42,11 @@ def test_onboard_with_pack_installs_dept(tmp_path):
     subprocess.run(
         [sys.executable, str(repo / "scripts" / "onboard.py"),
          "--vault", str(vault), "--non-interactive"],
-        capture_output=True, text=True,
+        capture_output=True,
+        text=True,
+        encoding="utf-8",
+        errors="replace",
+        env=_utf8_env(),
     )
 
     sys.path.insert(0, str(repo))
