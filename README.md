@@ -1,14 +1,18 @@
 # VN One Person Company
 
-
-
 > **Hệ điều hành AI cho Công ty 1 Người Việt Nam.**
 
 > Bạn là CEO duy nhất — 12+ phòng ban AI agents họp bàn debate, ra quyết định, sinh báo cáo + tài liệu `.docx/.xlsx` tuân thủ luật VN.
 
 > Chạy qua **Claude Desktop hoặc Claude Code** subscription, **không cần Anthropic API key**.
 
+## ✅ Trạng thái repo đã xác minh
 
+- Rất sạch: không có lỗi diff/whitespace
+- Lint: `ruff` pass
+- Test: `272 passed, 1 skipped`
+- Git: clean trên `main`, đồng bộ với `origin/main`
+- Ngày xác minh: 2026-10-31
 
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 
@@ -16,7 +20,7 @@
 
 [![LangGraph](https://img.shields.io/badge/built_on-LangGraph-purple.svg)](https://github.com/langchain-ai/langgraph)
 
-[![Tests](https://img.shields.io/badge/tests-261_passed-brightgreen.svg)](#)
+[![Tests](https://img.shields.io/badge/tests-272_passed-brightgreen.svg)](#)
 
 
 
