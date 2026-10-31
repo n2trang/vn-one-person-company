@@ -1,6 +1,8 @@
 """Compose: detect → simplify → TL;DR. Apply trên output cuối cho CEO."""
 from __future__ import annotations
+
 from pathlib import Path
+
 from core.translator.glossary import Glossary
 from core.translator.simplifier import Simplifier
 from core.translator.tldr_generator import TLDRGenerator

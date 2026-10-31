@@ -1,8 +1,7 @@
 """Final verification — tất cả 6 RULES enforced trong code."""
-import subprocess
 import shutil
+import subprocess
 from pathlib import Path
-
 
 REPO = Path(__file__).parent.parent.parent
 

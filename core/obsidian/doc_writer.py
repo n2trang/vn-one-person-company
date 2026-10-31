@@ -1,5 +1,6 @@
 """Render document tu template + data -> .docx hoac .xlsx."""
 from __future__ import annotations
+
 from pathlib import Path
 from typing import Any
 
@@ -45,7 +46,7 @@ class DocWriter:
         output_rel: str,
         rows: list[dict],
     ) -> Path:
-        from openpyxl import load_workbook, Workbook
+        from openpyxl import Workbook, load_workbook
 
         out_path = self.output_root / output_rel
         out_path.parent.mkdir(parents=True, exist_ok=True)

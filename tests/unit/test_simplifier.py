@@ -1,4 +1,5 @@
 from unittest.mock import MagicMock
+
 from core.translator.simplifier import Simplifier
 
 

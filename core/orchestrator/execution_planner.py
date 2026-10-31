@@ -11,6 +11,7 @@ Structure of the generated plan:
   - templates_needed: list of {name, dept_code}  ← used by DocumentExecutor
 """
 from __future__ import annotations
+
 import logging
 from pathlib import Path
 

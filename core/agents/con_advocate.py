@@ -3,6 +3,7 @@
 Adapted from references/tradingagents (RULE 2: neutral naming, no finance terms).
 """
 from __future__ import annotations
+
 from core.agents.base_agent import BaseAgent
 from core.meeting.debate_state import MeetingState
 

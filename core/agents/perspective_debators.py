@@ -11,7 +11,6 @@ from __future__ import annotations
 from core.agents.base_agent import BaseAgent
 from core.meeting.debate_state import MeetingState
 
-
 GROWTH_PROMPT = """Bạn là phía TĂNG TRƯỞNG (Growth) trong họp DN VN.
 Nhiệm vụ: Bảo vệ phương án táo bạo nhất, ưu tiên scale, chấp nhận rủi ro lớn để có upside cao.
 Bám số liệu Brain. Tiếng Việt. Định nghĩa thuật ngữ."""

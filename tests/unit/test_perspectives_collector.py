@@ -1,8 +1,9 @@
 """Test PerspectivesCollector - round 1 of meeting (parallel dept perspectives)."""
-from unittest.mock import MagicMock
 from pathlib import Path
-from core.orchestrator.perspectives_collector import PerspectivesCollector
+from unittest.mock import MagicMock
+
 from core.meeting.debate_state import new_meeting_state
+from core.orchestrator.perspectives_collector import PerspectivesCollector
 
 
 def test_collector_loads_dept_and_calls_agent():

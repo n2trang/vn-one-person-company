@@ -4,9 +4,8 @@
 3. repo/templates-vn/<dept>/<template>*
 """
 from __future__ import annotations
-from pathlib import Path
-from typing import Optional
 
+from pathlib import Path
 
 SUPPORTED_EXT = [".md", ".docx", ".xlsx"]
 
@@ -16,7 +15,7 @@ class TemplateResolver:
         self.vault = Path(vault_root)
         self.repo = Path(repo_templates)
 
-    def resolve(self, template_name: str, dept_code: str) -> Optional[Path]:
+    def resolve(self, template_name: str, dept_code: str) -> Path | None:
         candidates = [
             self.vault / "00-Templates-Custom" / dept_code,
             self.vault / "01-Departments" / dept_code / "refs",
@@ -31,7 +30,7 @@ class TemplateResolver:
         return None
 
     @staticmethod
-    def _find_in(folder: Path, name: str) -> Optional[Path]:
+    def _find_in(folder: Path, name: str) -> Path | None:
         name_lower = name.lower()
         for f in folder.iterdir():
             if not f.is_file():

@@ -1,6 +1,6 @@
 """Test CLI install-mcp --target flag."""
-import json
 from click.testing import CliRunner
+
 from core.cli import main
 
 

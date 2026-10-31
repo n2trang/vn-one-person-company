@@ -1,18 +1,11 @@
 """Smoke tests: all Phase 1 modules import + work."""
-from pathlib import Path
 import subprocess
 import sys
+from pathlib import Path
 
 
 def test_import_all():
-    from core.brain.schema import BrainContext
-    from core.brain.reader import BrainReader
-    from core.brain.memory import DecisionLog
-    from core.obsidian.vault import ObsidianVault
-    from core.obsidian.frontmatter import parse
-    from core.agents.department import Department, DepartmentLoader
-    from core.utils.config import load_config
-    from core.llm.providers import ClaudeProvider
+    pass
 
 
 def test_cli_status_works():

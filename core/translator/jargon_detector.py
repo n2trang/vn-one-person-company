@@ -1,8 +1,9 @@
 """Phát hiện thuật ngữ Eng/abbrev trong text VN."""
 from __future__ import annotations
-import re
-from core.translator.glossary import Glossary
 
+import re
+
+from core.translator.glossary import Glossary
 
 JARGON_RE = re.compile(r"\b([A-Z]{2,}|[A-Z][a-z]+(?:[A-Z][a-z]+)+)\b")
 

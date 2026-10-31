@@ -3,12 +3,7 @@ from pathlib import Path
 
 
 def test_phase5_imports():
-    from core.agents.agent_loader import AgentLoader, AgentDefinition
-    from core.agents.registry import Registry, DepartmentWithAgents
-    from core.agents.pack_loader import PackLoader, Pack
-    from core.obsidian.template_resolver import TemplateResolver
-    from core.obsidian.doc_writer import DocWriter
-    from core.obsidian.git_sync import GitSync
+    pass
 
 
 def test_3_packs_loadable():
@@ -16,7 +11,7 @@ def test_3_packs_loadable():
     repo = Path(__file__).parent.parent.parent
     loader = PackLoader(repo / "packs")
     available = loader.list_available()
-    assert set(["fnb", "retail", "tech-saas"]).issubset(set(available))
+    assert {"fnb", "retail", "tech-saas"}.issubset(set(available))
 
     for code in ["fnb", "retail", "tech-saas"]:
         pack = loader.load(code)

@@ -1,8 +1,8 @@
 """Test Synthesizer — tổng hợp meeting → final decision report cho CEO."""
 from unittest.mock import MagicMock
 
-from core.meeting.synthesizer import Synthesizer
 from core.meeting.debate_state import new_meeting_state
+from core.meeting.synthesizer import Synthesizer
 
 
 def test_synthesizer_writes_final_report():

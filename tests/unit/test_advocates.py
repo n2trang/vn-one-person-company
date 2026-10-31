@@ -1,6 +1,7 @@
 from unittest.mock import MagicMock
-from core.agents.pro_advocate import ProAdvocate
+
 from core.agents.con_advocate import ConAdvocate
+from core.agents.pro_advocate import ProAdvocate
 from core.meeting.debate_state import new_meeting_state
 
 

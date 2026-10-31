@@ -1,5 +1,6 @@
-from unittest.mock import MagicMock
 import json
+from unittest.mock import MagicMock
+
 from core.tools.tool_router import ToolRouter
 
 

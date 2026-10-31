@@ -1,6 +1,8 @@
-import pytest
 from pathlib import Path
-from core.agents.department import Department, DepartmentLoader
+
+import pytest
+
+from core.agents.department import DepartmentLoader
 
 REPO = Path(__file__).parent.parent.parent
 

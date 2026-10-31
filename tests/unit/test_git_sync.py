@@ -1,4 +1,3 @@
-from pathlib import Path
 from core.obsidian.git_sync import GitSync
 
 

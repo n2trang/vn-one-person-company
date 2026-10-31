@@ -3,6 +3,7 @@
 🔒 RULE 5: Mọi ToolResult PHẢI có sources + retrieved_at để cite.
 """
 from __future__ import annotations
+
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
 from datetime import datetime

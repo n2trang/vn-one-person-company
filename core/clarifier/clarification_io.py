@@ -1,17 +1,18 @@
 """Write clarification.md cho CEO + parse answer khi CEO tick checkbox."""
 from __future__ import annotations
+
+import re
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Optional
-import re
+
 from core.clarifier.question_generator import Question
 
 
 @dataclass
 class AnsweredQuestion:
     question_text: str
-    choice: Optional[str]
-    free_text_answer: Optional[str] = None
+    choice: str | None
+    free_text_answer: str | None = None
 
 
 def write_clarification(path: Path, questions: list[Question]) -> None:

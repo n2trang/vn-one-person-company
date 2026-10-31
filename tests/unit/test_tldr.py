@@ -1,4 +1,5 @@
 from unittest.mock import MagicMock
+
 from core.translator.tldr_generator import TLDRGenerator
 
 

@@ -1,9 +1,10 @@
 """Auto-grow glossary từ outputs + lookup từ terms_dictionary."""
 from __future__ import annotations
-from pathlib import Path
-import yaml
-import re
 
+import re
+from pathlib import Path
+
+import yaml
 
 DICT_PATH = Path(__file__).parent / "terms_dictionary.yaml"
 
@@ -24,7 +25,7 @@ class Glossary:
     def lookup(self, term: str) -> str | None:
         if term in self.vault_terms:
             return self.vault_terms[term]
-        for category, items in self.dict_data.items():
+        for items in self.dict_data.values():
             if term in items:
                 meta = items[term]
                 if isinstance(meta, dict) and "vn" in meta:

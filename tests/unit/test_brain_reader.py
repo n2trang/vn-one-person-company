@@ -1,5 +1,7 @@
 from pathlib import Path
+
 import pytest
+
 from core.brain.reader import BrainReader
 
 FIXTURE = Path(__file__).parent.parent / "fixtures" / "demo-vault"

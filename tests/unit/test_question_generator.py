@@ -1,7 +1,8 @@
 import json
 from unittest.mock import MagicMock
-from core.clarifier.question_generator import QuestionGenerator, Question
+
 from core.brain.gap_analyzer import Gap, Severity
+from core.clarifier.question_generator import QuestionGenerator
 
 
 def test_no_gaps_no_questions():

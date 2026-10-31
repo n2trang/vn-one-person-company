@@ -1,9 +1,11 @@
 """Curated benchmark VN."""
 from __future__ import annotations
-from pathlib import Path
-import yaml
-from core.tools.base_tool import BaseTool, ToolResult
 
+from pathlib import Path
+
+import yaml
+
+from core.tools.base_tool import BaseTool, ToolResult
 
 DATA_PATH = Path(__file__).parent / "data" / "benchmarks-vn.yaml"
 

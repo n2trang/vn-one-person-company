@@ -1,8 +1,9 @@
 """Load industry pack: pack.yaml + departments + extends overrides."""
 from __future__ import annotations
+
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Optional
+
 import yaml
 
 
@@ -21,9 +22,9 @@ class Pack:
     target_industries: list[str] = field(default_factory=list)
     adds_departments: list[str] = field(default_factory=list)
     extends_departments: list[PackExtension] = field(default_factory=list)
-    brain_template: Optional[str] = None
+    brain_template: str | None = None
     compliance_refs: list[str] = field(default_factory=list)
-    pack_dir: Optional[Path] = None
+    pack_dir: Path | None = None
 
 
 class PackLoader:

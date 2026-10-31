@@ -1,8 +1,9 @@
 """Tính các loại thuế VN: VAT, TNCN, TNDN, NTT, lệ phí môn bài."""
 from __future__ import annotations
-import re
-from core.tools.base_tool import BaseTool, ToolResult
 
+import re
+
+from core.tools.base_tool import BaseTool, ToolResult
 
 TNCN_BRACKETS = [
     (5_000_000, 0.05),

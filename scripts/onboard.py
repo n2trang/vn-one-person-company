@@ -10,6 +10,19 @@ from pathlib import Path
 import click
 from rich.console import Console
 
+
+class _ConsoleProxy:
+    """Write through the current stdout so Click test runners capture output correctly."""
+
+    def print(self, *args, **kwargs):
+        stream = sys.stdout
+        try:
+            if hasattr(stream, "reconfigure"):
+                stream.reconfigure(encoding="utf-8", errors="replace")
+        except Exception:
+            pass
+        Console(file=stream).print(*args, **kwargs)
+
 # Allow running this script directly: ensure repo root on sys.path so `core` imports.
 _REPO_ROOT = Path(__file__).parent.parent
 if str(_REPO_ROOT) not in sys.path:
@@ -17,7 +30,7 @@ if str(_REPO_ROOT) not in sys.path:
 
 from core.onboard import onboard_vault  # noqa: E402
 
-console = Console()
+console = _ConsoleProxy()
 
 
 @click.command()

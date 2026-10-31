@@ -1,7 +1,7 @@
 """Auto-commit vault changes (NEVER push - CEO control)."""
 from __future__ import annotations
+
 from pathlib import Path
-from typing import Optional
 
 
 class GitSync:
@@ -18,7 +18,7 @@ class GitSync:
         from git import Repo
         Repo.init(str(self.root))
 
-    def commit(self, message: str, paths: Optional[list[str]] = None) -> Optional[str]:
+    def commit(self, message: str, paths: list[str] | None = None) -> str | None:
         if not self.enabled or not self.is_repo():
             return None
 

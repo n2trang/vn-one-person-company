@@ -1,4 +1,4 @@
-﻿[build-system]
+[build-system]
 
 requires = ["hatchling"]
 
@@ -14,7 +14,7 @@ version = "0.2.0"
 
 description = "AI Operating System for AI Operating System for Vietnamese One-Person Companies — solo founder + 12 AI departments debate to decide and produce VN-compliant docs"
 
-authors = [{ name = "Thai Hai Ly", email = "thaihaily@example.com" }]
+authors = [{ name = "Thái Hải Ly", email = "thaihaily@example.com" }]
 
 license = "Apache-2.0"
 
@@ -50,7 +50,7 @@ dependencies = [
 
     "gitpython>=3.1.40",
 
-    "mcp>=1.0.0",
+    "mcp>=1.0.0,<2",
 
 ]
 
@@ -82,6 +82,14 @@ line-length = 100
 
 target-version = "py311"
 
+[tool.ruff.lint]
+ignore = [
+    "BLE001",
+    "PLW1510",
+    "RUF012",
+    "S110",
+    "SIM102",
+]
 
 
 [tool.pytest.ini_options]

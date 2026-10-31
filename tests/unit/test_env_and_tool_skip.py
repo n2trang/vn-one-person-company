@@ -1,13 +1,14 @@
 """Test env loading + tool availability + ToolRouter filter — no real keys used."""
 from __future__ import annotations
+
 import os
 
-from core.utils.config import load_vault_env, save_vault_env, apply_vault_env_to_os
-from core.tools.web_search import WebSearch
-from core.tools.vn_law_search import VNLawSearch
 from core.tools.industry_benchmark import IndustryBenchmark
 from core.tools.tax_calculator import TaxCalculator
 from core.tools.tool_router import ToolRouter
+from core.tools.vn_law_search import VNLawSearch
+from core.tools.web_search import WebSearch
+from core.utils.config import apply_vault_env_to_os, load_vault_env, save_vault_env
 
 
 def test_save_and_load_vault_env(tmp_path):
@@ -98,7 +99,8 @@ def test_tool_router_empty_available_returns_empty_plan():
 def test_research_phase_lists_available_and_skipped(monkeypatch):
     monkeypatch.delenv("TAVILY_API_KEY", raising=False)
     from core.orchestrator.research_phase import (
-        list_available_tools, list_skipped_tools,
+        list_available_tools,
+        list_skipped_tools,
     )
     available = list_available_tools()
     skipped = list_skipped_tools()

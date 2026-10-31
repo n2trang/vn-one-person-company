@@ -6,17 +6,22 @@ Flow:
   perspectives → pro_con_loop → perspective_loop → synthesizer → END
 """
 from __future__ import annotations
-from typing import Callable
-from langgraph.graph import StateGraph, END
-from core.meeting.debate_state import MeetingState
-from core.meeting.conditional_logic import next_pro_con_node, next_perspective_node
-from core.meeting.synthesizer import Synthesizer
-from core.meeting.checkpointer import make_checkpointer
-from core.agents.pro_advocate import ProAdvocate
+
+from collections.abc import Callable
+
+from langgraph.graph import END, StateGraph
+
 from core.agents.con_advocate import ConAdvocate
 from core.agents.perspective_debators import (
-    GrowthDebator, CautiousDebator, BalancedDebator,
+    BalancedDebator,
+    CautiousDebator,
+    GrowthDebator,
 )
+from core.agents.pro_advocate import ProAdvocate
+from core.meeting.checkpointer import make_checkpointer
+from core.meeting.conditional_logic import next_perspective_node, next_pro_con_node
+from core.meeting.debate_state import MeetingState
+from core.meeting.synthesizer import Synthesizer
 
 
 class MeetingGraph:

@@ -108,9 +108,10 @@ CROSS-REFERENCE: Đây là quy chế bảo mật cho nhân sự. Chính sách b�
 
 ---
 
-📋 Tài liệu được tạo bởi Thai Hai Ly
+📋 Tài liệu được tạo bởi Thái Hải Ly
 
-✍️ Tác giả: Thai Hai Ly
+✍️ Tác giả: Thái Hải Ly
 
-🔗 Liên hệ hỗ trợ: https://bio.ybai.me/777777
+Liên hệ hỗ trợ: https://n2trang.github.io/
+
 

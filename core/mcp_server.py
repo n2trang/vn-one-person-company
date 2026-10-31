@@ -19,11 +19,16 @@ Tools registered (9):
     vn_upgrade     — refresh existing vault với enriched prompts + aliases
 """
 from __future__ import annotations
+
 import os
 import re
 from pathlib import Path
 
-from mcp.server.fastmcp import Context, FastMCP
+try:
+    from mcp.server.fastmcp import Context, FastMCP
+except ModuleNotFoundError:  # pragma: no cover - compatibility for mcp 2.x
+    from mcp.server.mcpserver import Context
+    from mcp.server.mcpserver import MCPServer as FastMCP
 
 from core.brain.reader import BrainReader
 from core.llm.providers import MCPSamplingProvider
@@ -31,7 +36,6 @@ from core.obsidian.vault import ObsidianVault
 from core.onboard import onboard_vault
 from core.orchestrator.flow_controller import FlowController
 from core.upgrade import upgrade_vault
-
 
 mcp = FastMCP("vn-business-os")
 
@@ -259,14 +263,14 @@ def vn_status(vault: str = "") -> dict:
     tasks = vault_obj.list_tasks()
 
     from core.orchestrator.research_phase import (
-        list_available_tools, list_skipped_tools,
+        list_available_tools,
+        list_skipped_tools,
     )
 
     # P2.5: Báo packs đã cài + compliance refs (PackLoader integration)
     packs_info: list[dict] = []
     try:
         from core.agents.pack_loader import PackLoader
-        from core.utils.config import load_vault_env
         # Đọc .vncoderc của vault để biết packs đã cài
         vncoderc = vault_path / ".vncoderc"
         installed_codes: list[str] = []
@@ -287,7 +291,7 @@ def vn_status(vault: str = "") -> dict:
                 })
             except FileNotFoundError:
                 pass
-    except Exception:  # noqa: BLE001
+    except Exception:
         pass
 
     workflow_rules = """📋 HƯỚNG DẪN VẬN HÀNH (Claude đọc trước khi xử lý task):

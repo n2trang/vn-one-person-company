@@ -490,7 +490,7 @@ Xem [CONTRIBUTING.md](CONTRIBUTING.md).
 
 
 
-**Apache License 2.0** — © 2026 Thai Hai Ly
+**Apache License 2.0** — © 2026 Thái Hải Ly
 
 
 

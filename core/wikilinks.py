@@ -3,10 +3,10 @@
 Idempotent: chạy lại không phá file đã có. Append `## Liên kết` chỉ khi marker chưa có.
 """
 from __future__ import annotations
+
 from pathlib import Path
 
 import yaml
-
 
 LINK_MARKER = "## Liên kết"
 
@@ -147,5 +147,5 @@ def _read_dept_meta(d: Path) -> dict | None:
         return None
     try:
         return yaml.safe_load(yaml_path.read_text(encoding="utf-8"))
-    except Exception:  # noqa: BLE001
+    except Exception:
         return None

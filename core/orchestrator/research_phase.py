@@ -1,15 +1,16 @@
 """Run tools parallel sau clarification, trước meeting."""
 from __future__ import annotations
+
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
-from core.tools.tool_router import ToolRouter, ToolCall
-from core.tools.web_search import WebSearch
-from core.tools.vn_law_search import VNLawSearch
-from core.tools.vn_local_regulation import VNLocalRegulation
+
 from core.tools.competitor_research import CompetitorResearch
 from core.tools.industry_benchmark import IndustryBenchmark
 from core.tools.tax_calculator import TaxCalculator
-
+from core.tools.tool_router import ToolCall, ToolRouter
+from core.tools.vn_law_search import VNLawSearch
+from core.tools.vn_local_regulation import VNLocalRegulation
+from core.tools.web_search import WebSearch
 
 TOOL_REGISTRY = {
     "web_search": WebSearch,
@@ -29,7 +30,7 @@ def list_available_tools() -> list[str]:
             instance = cls()
             if instance.is_available():
                 available.append(name)
-        except Exception:  # noqa: BLE001
+        except Exception:
             pass
     return available
 
@@ -47,7 +48,7 @@ def list_skipped_tools() -> list[dict]:
                             if "search" in name or "research" in name or "regulation" in name
                             else "Unavailable",
                 })
-        except Exception as e:  # noqa: BLE001
+        except Exception as e:
             skipped.append({"name": name, "reason": str(e)})
     return skipped
 

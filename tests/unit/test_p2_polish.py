@@ -1,14 +1,10 @@
 """Test P2 polish: slugify VN, JSON parse robust, brain filter, cache per-vault."""
 from __future__ import annotations
-from pathlib import Path
 
-import pytest
-
+from core.agents.base_agent import BaseAgent
 from core.orchestrator.flow_controller import _slugify
 from core.orchestrator.router import Router
 from core.tools.tool_router import ToolRouter
-from core.agents.base_agent import BaseAgent
-
 
 # ─────────────────────────────────── P2.6: Slugify VN ─────────────────────────
 
@@ -50,7 +46,10 @@ class _MockLLM:
 class TestRouterJSONParse:
     def _classify(self, raw):
         from core.brain.schema import (
-            BrainContext, Strategy, Budget, Headcount,
+            BrainContext,
+            Budget,
+            Headcount,
+            Strategy,
         )
         brain = BrainContext(
             strategy=Strategy(vision="x", icp="x"),

@@ -1,8 +1,16 @@
 """Test install_mcp — uses tmp_path to avoid touching real Claude Desktop config."""
 import json
 from pathlib import Path
+
 import pytest
-from core.install_mcp import install, uninstall, get_config_path, get_claude_code_config_path, install_for_target
+
+from core.install_mcp import (
+    get_claude_code_config_path,
+    get_config_path,
+    install,
+    install_for_target,
+    uninstall,
+)
 from core.utils.config import save_vault_env
 
 

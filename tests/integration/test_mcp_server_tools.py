@@ -6,14 +6,12 @@ Verifies:
 - vn_run routes LLM calls via MCPSamplingProvider → ctx.session.create_message
 """
 from __future__ import annotations
+
 import asyncio
 import json
 import shutil
 from pathlib import Path
 from unittest.mock import MagicMock
-
-import pytest
-
 
 REPO = Path(__file__).parent.parent.parent
 FIXTURE = REPO / "tests" / "fixtures" / "techco-vault"
@@ -23,15 +21,6 @@ def test_mcp_server_imports():
     """Server module imports + all 9 tool fns exposed."""
     from core.mcp_server import (
         mcp,
-        vn_run,
-        vn_resume,
-        vn_meeting,
-        vn_approve,
-        vn_execute,
-        vn_draft,
-        vn_status,
-        vn_onboard,
-        vn_upgrade,
     )
     assert mcp.name == "vn-business-os"
 

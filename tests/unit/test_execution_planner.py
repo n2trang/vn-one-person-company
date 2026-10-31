@@ -1,10 +1,8 @@
 """Unit tests for core/orchestrator/execution_planner.py (P0.2)."""
 import textwrap
-from pathlib import Path
 from unittest.mock import MagicMock
 
 import pytest
-
 
 # ──────────────────────────────────────────────────────────────────────────────
 # Helpers

@@ -1,8 +1,9 @@
 """Load agent definition từ .md file (YAML frontmatter + system prompt body)."""
 from __future__ import annotations
+
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Optional
+
 from core.obsidian.frontmatter import parse as parse_frontmatter
 
 
@@ -12,7 +13,7 @@ class AgentDefinition:
     name_vn: str
     department: str
     system_prompt: str
-    name_en: Optional[str] = None
+    name_en: str | None = None
     seniority: str = "mid"
     emoji: str = ""
     expertise: list[str] = field(default_factory=list)
@@ -20,7 +21,7 @@ class AgentDefinition:
     required_tools: list[str] = field(default_factory=list)
     optional_tools: list[str] = field(default_factory=list)
     deliverables: list[str] = field(default_factory=list)
-    model_override: Optional[str] = None
+    model_override: str | None = None
     temperature: float = 0.7
 
 

@@ -1,6 +1,6 @@
-from pathlib import Path
 import pytest
-from core.agents.agent_loader import AgentLoader, AgentDefinition
+
+from core.agents.agent_loader import AgentLoader
 
 
 def test_load_agent_from_md(tmp_path):

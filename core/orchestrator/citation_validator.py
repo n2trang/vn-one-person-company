@@ -13,9 +13,8 @@ Heuristics (không quá strict):
 from __future__ import annotations
 
 import re
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from pathlib import Path
-
 
 # ────────────────────────────── Patterns ─────────────────────────────── #
 
@@ -146,7 +145,7 @@ class CitationValidator:
             if not stripped or _RE_HEADING.match(stripped):
                 continue
             # Bỏ qua đoạn code block (không validate nội dung code/yaml)
-            if stripped.startswith("```") or stripped.startswith("|"):
+            if stripped.startswith(("```", "|")):
                 continue
 
             # Citation marker có thể ở sau dấu chấm cùng dòng (vd:

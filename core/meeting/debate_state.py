@@ -4,7 +4,8 @@ RULE 2: Domain-neutral. KHONG dung tu trade/finance.
 Adapted from TradingAgents/agents/utils/agent_states.py voi rename neutral.
 """
 from __future__ import annotations
-from typing import TypedDict, Optional
+
+from typing import TypedDict
 
 
 class ProConDebateState(TypedDict):
@@ -12,9 +13,9 @@ class ProConDebateState(TypedDict):
     pro_history: list[str]
     con_history: list[str]
     history: list[str]
-    latest_speaker: Optional[str]
+    latest_speaker: str | None
     count: int
-    judge_decision: Optional[str]
+    judge_decision: str | None
 
 
 class PerspectiveDebateState(TypedDict):
@@ -28,9 +29,9 @@ class PerspectiveDebateState(TypedDict):
     cautious_history: list[str]
     balanced_history: list[str]
     history: list[str]
-    latest_speaker: Optional[str]
+    latest_speaker: str | None
     count: int
-    judge_decision: Optional[str]
+    judge_decision: str | None
 
 
 class MeetingState(TypedDict):
@@ -54,7 +55,7 @@ class MeetingState(TypedDict):
     max_perspective_debate_rounds: int
 
     # Output
-    final_report: Optional[str]
+    final_report: str | None
 
     # Metadata
     task_id: str

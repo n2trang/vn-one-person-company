@@ -1,5 +1,6 @@
 """Multi-provider LLM abstraction (stub — full impl in Phase 4)."""
 from __future__ import annotations
+
 import asyncio
 import inspect
 import os
@@ -110,9 +111,7 @@ class MCPSamplingProvider:
             return True
         if "connection" in name or "connection" in msg:
             return True
-        if "overloaded" in msg or "503" in msg or "502" in msg:
-            return True
-        return False
+        return bool("overloaded" in msg or "503" in msg or "502" in msg)
 
     def _initial_delay_for(self, exc: BaseException) -> float:
         """Pick initial backoff: longer for 429, shorter for other transients."""
@@ -132,7 +131,7 @@ class MCPSamplingProvider:
         for attempt in range(self.max_retries + 1):
             try:
                 return self._do_complete(messages, model)
-            except Exception as e:  # noqa: BLE001
+            except Exception as e:
                 last_exc = e
                 if attempt >= self.max_retries or not self._is_retryable(e):
                     raise
@@ -182,7 +181,7 @@ class MCPSamplingProvider:
         for attempt in range(self.max_retries + 1):
             try:
                 return await self._do_acomplete(messages, model)
-            except Exception as e:  # noqa: BLE001
+            except Exception as e:
                 last_exc = e
                 if attempt >= self.max_retries or not self._is_retryable(e):
                     raise

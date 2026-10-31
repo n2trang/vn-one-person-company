@@ -1,10 +1,11 @@
 """Quy định địa phương VN."""
 from __future__ import annotations
+
 import os
 from pathlib import Path
+
 from core.tools.base_tool import BaseTool, ToolResult
 from core.tools.tool_cache import ToolCache
-
 
 TRUSTED_LOCAL_DOMAINS = [
     "chinhphu.vn", "moj.gov.vn",

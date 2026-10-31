@@ -1,8 +1,10 @@
 """Central registry: load 12 core dept + N pack-specific dept + agents."""
 from __future__ import annotations
+
 from pathlib import Path
+
+from core.agents.agent_loader import AgentDefinition, AgentLoader
 from core.agents.department import Department, DepartmentLoader
-from core.agents.agent_loader import AgentLoader, AgentDefinition
 
 
 class DepartmentWithAgents:

@@ -3,6 +3,7 @@
 Adapted from TradingAgents/graph/conditional_logic.py voi neutral naming.
 """
 from __future__ import annotations
+
 from core.meeting.debate_state import MeetingState
 
 

@@ -1,18 +1,21 @@
 """Điều phối toàn bộ flow: brief → router → gap → clarify (Stop pre) →
    research → meeting → synthesizer (Stop 1) → execution (Stop 2)."""
 from __future__ import annotations
+
+import re
+from collections.abc import Callable
 from dataclasses import dataclass
 from enum import Enum
 from pathlib import Path
-from typing import Any, Optional
-import re
+from typing import Any
 
-from core.brain.reader import BrainReader
 from core.brain.gap_analyzer import GapAnalyzer
-from core.clarifier.question_generator import QuestionGenerator
+from core.brain.reader import BrainReader
 from core.clarifier.clarification_io import (
-    write_clarification, read_answers,
+    read_answers,
+    write_clarification,
 )
+from core.clarifier.question_generator import QuestionGenerator
 from core.obsidian.vault import ObsidianVault
 from core.orchestrator.router import Router
 from core.utils.config import load_config
@@ -31,7 +34,7 @@ class FlowResult:
     stage: FlowStage
     task_folder: Path
     message: str = ""
-    error: Optional[str] = None
+    error: str | None = None
 
 
 def _slugify(brief: str, max_len: int = 50) -> str:
@@ -225,13 +228,13 @@ class FlowController:
         P1.8: CitationValidator runs after report written, appends warning section if flags found.
         """
         from core.brain.reader import BrainReader
-        from core.orchestrator.research_phase import ResearchPhase
-        from core.orchestrator.perspectives_collector import PerspectivesCollector
-        from core.orchestrator.citation_validator import CitationValidator
-        from core.meeting.meeting_graph import MeetingGraph
         from core.meeting.debate_state import new_meeting_state
-        from core.translator.pipeline import TranslatorPipeline
+        from core.meeting.meeting_graph import MeetingGraph
         from core.obsidian.git_sync import GitSync
+        from core.orchestrator.citation_validator import CitationValidator
+        from core.orchestrator.perspectives_collector import PerspectivesCollector
+        from core.orchestrator.research_phase import ResearchPhase
+        from core.translator.pipeline import TranslatorPipeline
 
         brief = self._read_brief(task_folder)
         brain = BrainReader(self.vault.root).load()
@@ -277,7 +280,7 @@ class FlowController:
             try:
                 from core.meeting.checkpointer import make_checkpointer
                 cp_setting = make_checkpointer()
-            except Exception as e:  # noqa: BLE001
+            except Exception as e:
                 self._log_warning(f"Checkpointer init failed, fallback off: {e}")
                 cp_setting = False
 
@@ -378,8 +381,8 @@ class FlowController:
 
     def approve_decision(self, task_folder: Path, decision: str = "approve") -> FlowResult:
         """Stage 4: CEO duyệt decision report → generate structured execution plan (P0.2)."""
-        from core.translator.pipeline import TranslatorPipeline
         from core.orchestrator.execution_planner import generate_execution_plan
+        from core.translator.pipeline import TranslatorPipeline
 
         glossary_path = self.vault.root / "00-Brain" / "glossary.md"
         translator = TranslatorPipeline(self.llm, vault_glossary_path=glossary_path)
@@ -411,8 +414,8 @@ class FlowController:
 
     def execute(self, task_folder: Path) -> FlowResult:
         """Stage 5: render docs from execution plan → 03-Outputs/ (P0.1)."""
-        from core.orchestrator.document_executor import execute_documents
         from core.brain.reader import BrainReader
+        from core.orchestrator.document_executor import execute_documents
 
         repo_root = Path(__file__).parent.parent.parent
 
@@ -447,7 +450,7 @@ class FlowController:
 
         generated = result["generated"]
         skipped = result["skipped"]
-        outputs_dir = result["outputs_dir"]
+        result["outputs_dir"]
 
         parts = [f"Đã tạo {len(generated)} tài liệu trong 03-Outputs/{task_folder.name}/"]
         if generated:
@@ -462,7 +465,7 @@ class FlowController:
         )
 
 
-def _make_translating_collector(collect_fn, translator) -> "Callable":
+def _make_translating_collector(collect_fn, translator) -> Callable:
     """Wrap collector để translate mỗi perspective output (P1.6 all_intermediate mode).
 
     Chỉ dùng khi translator_mode = 'all_intermediate'.
@@ -472,8 +475,6 @@ def _make_translating_collector(collect_fn, translator) -> "Callable":
     nhưng perspective inputs vào Synthesizer sẽ đã được simplify → cleaner synthesis.
     Lỗi translator không gãy flow — fallback về raw text.
     """
-    from typing import Callable  # noqa: F401 — type hint only
-
     def _wrapped(state):
         result = collect_fn(state)
         perspectives = result.get("perspectives", {})
@@ -481,7 +482,7 @@ def _make_translating_collector(collect_fn, translator) -> "Callable":
         for dept_code, text in perspectives.items():
             # Không translate error/placeholder markers
             if isinstance(text, str) and (
-                text.startswith("[ERROR]") or text.startswith("[Phong")
+                text.startswith(("[ERROR]", "[Phong"))
             ):
                 translated[dept_code] = text
             else:

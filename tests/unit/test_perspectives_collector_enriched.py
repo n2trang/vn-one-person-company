@@ -2,17 +2,13 @@
 from __future__ import annotations
 
 from pathlib import Path
-from unittest.mock import MagicMock, patch
-
-import pytest
+from unittest.mock import MagicMock
 
 from core.meeting.debate_state import new_meeting_state
 from core.orchestrator.perspectives_collector import (
-    PERSPECTIVE_PROMPT,
-    PerspectivesCollector,
     _STANCE_SUFFIX,
+    PerspectivesCollector,
 )
-
 
 # ── helpers ──────────────────────────────────────────────────────────────
 
@@ -174,7 +170,7 @@ class TestEnrichedPromptLoading:
             departments_root=repo_depts, llm=llm, vault_root=vault_root
         )
         state = new_meeting_state(brief="brief", departments=["03-finance"])
-        result = collector.collect(state)
+        collector.collect(state)
 
         call_args = llm.complete.call_args
         system_content = call_args[0][0][0]["content"]

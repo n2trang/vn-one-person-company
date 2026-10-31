@@ -102,9 +102,10 @@ CROSS-REFERENCE: Liên kết với Quy chế Họp hành (P-OPS-17) về agenda 
 
 ---
 
-📋 Tài liệu được tạo bởi Thai Hai Ly
+📋 Tài liệu được tạo bởi Thái Hải Ly
 
-✍️ Tác giả: Thai Hai Ly
+✍️ Tác giả: Thái Hải Ly
 
-🔗 Liên hệ hỗ trợ: https://bio.ybai.me/777777
+Liên hệ hỗ trợ: https://n2trang.github.io/
+
 

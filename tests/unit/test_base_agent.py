@@ -1,5 +1,6 @@
-from core.agents.base_agent import BaseAgent
 from unittest.mock import MagicMock
+
+from core.agents.base_agent import BaseAgent
 
 
 def test_base_agent_speak_calls_llm():

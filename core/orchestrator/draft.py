@@ -14,12 +14,12 @@ Khi nào nên dùng vn_meeting/vn_run thay thế:
 Output: <vault>/02-Tasks/<ts>-draft-<slug>/draft.md (frontmatter + body).
 """
 from __future__ import annotations
+
 from datetime import datetime
 from pathlib import Path
 
 from core.brain.reader import BrainReader
 from core.obsidian.vault import ObsidianVault
-
 
 _DRAFT_PROMPT = """Bạn là chuyên viên soạn thảo tài liệu cho doanh nghiệp Việt Nam.
 

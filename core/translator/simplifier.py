@@ -1,8 +1,8 @@
 """Rewrite output to inject term definitions (RULE 4)."""
 from __future__ import annotations
-from core.translator.jargon_detector import JargonDetector
-from core.translator.glossary import Glossary
 
+from core.translator.glossary import Glossary
+from core.translator.jargon_detector import JargonDetector
 
 SIMPLIFIER_PROMPT = """Bạn là biên tập viên DN VN. Rewrite text dưới đây cho CEO non-tech đọc dễ hiểu.
 

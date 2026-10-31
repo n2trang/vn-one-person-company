@@ -140,9 +140,10 @@ LENGTH: 6-10 trang A4 (excl. appendix).
 
 ---
 
-📋 Tài liệu được tạo bởi Thai Hai Ly
+📋 Tài liệu được tạo bởi Thái Hải Ly
 
-✍️ Tác giả: Thai Hai Ly
+✍️ Tác giả: Thái Hải Ly
 
-🔗 Liên hệ hỗ trợ: https://bio.ybai.me/777777
+Liên hệ hỗ trợ: https://n2trang.github.io/
+
 

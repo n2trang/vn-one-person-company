@@ -5,11 +5,11 @@ Use case: User đã onboard vault từ phiên bản cũ. Khi plugin upgrade
 mà KHÔNG động đến dữ liệu CEO đã điền (Brain content, Tasks, Outputs).
 """
 from __future__ import annotations
+
 import shutil
 from pathlib import Path
 
 import yaml
-
 
 REPO_ROOT = Path(__file__).parent.parent
 

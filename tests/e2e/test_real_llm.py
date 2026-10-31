@@ -4,8 +4,9 @@
 """
 import os
 import time
-import pytest
 from pathlib import Path
+
+import pytest
 
 REPO = Path(__file__).parent.parent.parent
 FIXTURE = REPO / "tests/fixtures/techco-vault"
@@ -20,8 +21,8 @@ def test_real_llm_e2e_under_budget(tmp_path):
     vault = tmp_path / "vault"
     shutil.copytree(FIXTURE, vault)
 
-    from core.orchestrator.flow_controller import FlowController
     from core.llm.providers import get_default_provider
+    from core.orchestrator.flow_controller import FlowController
 
     llm = get_default_provider()
     fc = FlowController(vault_root=vault, llm=llm)

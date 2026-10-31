@@ -11,6 +11,7 @@ Fallback: if execution plan has no template table, LLM extracts template
 requests from plan body text.
 """
 from __future__ import annotations
+
 import logging
 from pathlib import Path
 

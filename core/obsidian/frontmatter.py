@@ -1,6 +1,8 @@
 """Parse YAML frontmatter trong Obsidian markdown."""
 from __future__ import annotations
+
 import re
+
 import yaml
 
 FRONTMATTER_RE = re.compile(r"^---\n(.*?)\n---\n(.*)", re.DOTALL)

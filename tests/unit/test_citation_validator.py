@@ -3,15 +3,11 @@ from __future__ import annotations
 
 from pathlib import Path
 
-import pytest
-
 from core.orchestrator.citation_validator import (
-    CitationFlag,
     CitationValidator,
     _is_common_knowledge,
     _split_sentences,
 )
-
 
 # ── helpers ───────────────────────────────────────────────────────────────
 
@@ -235,7 +231,7 @@ class TestCitationValidatorFileIO:
     def test_warning_section_format(self, tmp_path):
         content = "# Report\n\nDoanh thu tháng 3 tăng 25%.\nTheo Nghị định 15/2018, cần đăng ký.\n"
         p = _write_report(tmp_path, content)
-        flags = self.validator.validate(p)
+        self.validator.validate(p)
         result = p.read_text(encoding="utf-8")
         # Each flag listed as bullet
         assert "- **[Dòng" in result

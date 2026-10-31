@@ -3,11 +3,11 @@
 Tách từ scripts/onboard.py để MCP tool gọi trực tiếp (không subprocess).
 """
 from __future__ import annotations
+
 import shutil
 from pathlib import Path
 
 import yaml
-
 
 REPO_ROOT = Path(__file__).parent.parent
 
@@ -99,7 +99,7 @@ def onboard_vault(
             from git import Repo
             Repo.init(str(vault))
             result["steps"].append("Git initialized")
-        except Exception as e:  # noqa: BLE001
+        except Exception as e:
             result["warnings"].append(f"Git init failed: {e}")
 
     # Step 6.5: Save API keys vào vault/.env (nếu user cung cấp)

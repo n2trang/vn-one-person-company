@@ -1,9 +1,26 @@
 """CLI entry: vn-os <command>."""
 from __future__ import annotations
+
+import sys
+
 import click
 from rich.console import Console
 
-console = Console()
+
+class _ConsoleProxy:
+    """Write through the current stdout so Click test runners capture output correctly."""
+
+    def print(self, *args, **kwargs):
+        stream = sys.stdout
+        try:
+            if hasattr(stream, "reconfigure"):
+                stream.reconfigure(encoding="utf-8", errors="replace")
+        except Exception:
+            pass
+        Console(file=stream).print(*args, **kwargs)
+
+
+console = _ConsoleProxy()
 
 
 @click.group()
@@ -17,11 +34,12 @@ def main():
 def status(vault):
     """In trạng thái vault hiện tại."""
     from pathlib import Path
+
     from core.brain.reader import BrainReader
 
     try:
         ctx = BrainReader(Path(vault)).load()
-        console.print(f"[green]✓[/] Brain loaded")
+        console.print("[green]✓[/] Brain loaded")
         console.print(f"  ICP: {ctx.strategy.icp[:60]}")
         console.print(f"  Products: {len(ctx.products)}")
         console.print(f"  Active depts: {len(ctx.headcount.active_departments)}")
@@ -43,8 +61,9 @@ def run(brief_arg, brief_opt, vault):
       vn-os run --vault . --brief "Soạn HD lao động..."
     """
     from pathlib import Path
-    from core.orchestrator.flow_controller import FlowController, FlowStage
+
     from core.llm.providers import get_default_provider
+    from core.orchestrator.flow_controller import FlowController, FlowStage
 
     # Resolve brief: positional arg ưu tiên, fallback --brief option
     brief = brief_arg or brief_opt
@@ -62,7 +81,7 @@ def run(brief_arg, brief_opt, vault):
     result = fc.run(brief)
 
     if result.stage == FlowStage.PAUSE_CLARIFICATION:
-        console.print(f"[yellow]⏸  Pause cho clarification[/]")
+        console.print("[yellow]⏸  Pause cho clarification[/]")
         console.print(f"   Folder: {result.task_folder}")
         console.print(f"   {result.message}")
         console.print(f"\n[bold]Bước tiếp:[/] mở {result.task_folder}/03-clarification.md, "
@@ -79,9 +98,9 @@ def run(brief_arg, brief_opt, vault):
 def resume(task_folder):
     """Resume flow sau khi CEO trả lời clarification."""
     from pathlib import Path
-    from core.orchestrator.flow_controller import FlowController, FlowStage
-    from core.llm.providers import get_default_provider
 
+    from core.llm.providers import get_default_provider
+    from core.orchestrator.flow_controller import FlowController, FlowStage
     from core.utils.config import apply_vault_env_to_os
     folder = Path(task_folder)
     vault_root = folder.parent.parent   # task_folder = vault/02-Tasks/<id>
@@ -100,11 +119,11 @@ def resume(task_folder):
 @click.argument("task_folder", type=click.Path(exists=True))
 def meeting(task_folder):
     """Sau khi CEO trả lời clarification → run meeting (Stop 1)."""
-    from pathlib import Path
     import re
-    from core.orchestrator.flow_controller import FlowController, FlowStage
-    from core.llm.providers import get_default_provider
+    from pathlib import Path
 
+    from core.llm.providers import get_default_provider
+    from core.orchestrator.flow_controller import FlowController
     from core.utils.config import apply_vault_env_to_os
     folder = Path(task_folder)
     apply_vault_env_to_os(folder.parent.parent)
@@ -126,9 +145,9 @@ def meeting(task_folder):
 def approve(task_folder):
     """CEO duyệt decision report → sinh execution plan."""
     from pathlib import Path
-    from core.orchestrator.flow_controller import FlowController
-    from core.llm.providers import get_default_provider
 
+    from core.llm.providers import get_default_provider
+    from core.orchestrator.flow_controller import FlowController
     from core.utils.config import apply_vault_env_to_os
     folder = Path(task_folder)
     apply_vault_env_to_os(folder.parent.parent)
@@ -142,9 +161,9 @@ def approve(task_folder):
 def execute_cmd(task_folder):
     """CEO duyệt execute → sinh .docx/.xlsx vào 03-Outputs/."""
     from pathlib import Path
-    from core.orchestrator.flow_controller import FlowController
-    from core.llm.providers import get_default_provider
 
+    from core.llm.providers import get_default_provider
+    from core.orchestrator.flow_controller import FlowController
     from core.utils.config import apply_vault_env_to_os
     folder = Path(task_folder)
     apply_vault_env_to_os(folder.parent.parent)
@@ -157,7 +176,8 @@ def execute_cmd(task_folder):
 @click.option("--vault", type=click.Path(), required=True)
 def onboard(vault):
     """Wizard tạo vault mới cho DN."""
-    import subprocess, sys
+    import subprocess
+    import sys
     from pathlib import Path
     repo = Path(__file__).parent.parent
     subprocess.run(
@@ -184,8 +204,9 @@ def install_mcp_cmd(vault, target):
     Mặc định đăng ký vào cả hai. Dùng --target để chọn riêng.
     Sau khi install, restart Claude Desktop / Claude Code để load server.
     """
-    from core.install_mcp import install_for_target
     from pathlib import Path
+
+    from core.install_mcp import install_for_target
 
     results = install_for_target(
         target=target,
@@ -223,7 +244,7 @@ def install_mcp_cmd(vault, target):
 )
 def uninstall_mcp_cmd(target):
     """Remove vn-business-os MCP server entry from config(s)."""
-    from core.install_mcp import uninstall, get_config_path, get_claude_code_config_path
+    from core.install_mcp import get_claude_code_config_path, get_config_path, uninstall
 
     targets = []
     if target in ("desktop", "both"):

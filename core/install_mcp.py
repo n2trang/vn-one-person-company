@@ -6,13 +6,13 @@ Cross-platform path detection:
 - Linux:   ~/.config/Claude/claude_desktop_config.json
 """
 from __future__ import annotations
+
 import json
 import os
 import platform
 import shutil
 import sys
 from pathlib import Path
-from typing import Optional
 
 
 def get_config_path() -> Path:
@@ -48,7 +48,7 @@ def get_claude_code_config_path() -> Path:
 
 def install_for_target(
     target: str = "both",
-    vault_path: Optional[Path] = None,
+    vault_path: Path | None = None,
 ) -> dict:
     """Install MCP server for target: 'desktop', 'claude-code', or 'both'.
 
@@ -81,9 +81,9 @@ def install_for_target(
 
 
 def install(
-    config_path: Optional[Path] = None,
+    config_path: Path | None = None,
     server_name: str = "vn-business-os",
-    vault_path: Optional[Path] = None,
+    vault_path: Path | None = None,
 ) -> dict:
     """Install (or update) MCP server entry. Returns summary dict.
 
@@ -150,7 +150,7 @@ def install(
     }
 
 
-def uninstall(config_path: Optional[Path] = None, server_name: str = "vn-business-os") -> dict:
+def uninstall(config_path: Path | None = None, server_name: str = "vn-business-os") -> dict:
     """Remove MCP server entry. Idempotent."""
     cfg_path = config_path or get_config_path()
     if not cfg_path.exists():

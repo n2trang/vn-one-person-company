@@ -1,7 +1,8 @@
 """Department model + loader."""
 from __future__ import annotations
+
 from pathlib import Path
-from typing import Optional
+
 import yaml
 from pydantic import BaseModel, Field
 
@@ -19,7 +20,7 @@ class RoutingRule(BaseModel):
 class Department(BaseModel):
     code: str
     name_vn: str
-    name_en: Optional[str] = None
+    name_en: str | None = None
     tier: int
     description: str = ""
     agents: list[str] = Field(default_factory=list)

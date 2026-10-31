@@ -1,7 +1,7 @@
 import pytest
-from core.brain.schema import (
-    Strategy, Product, Budget, Headcount, BrainContext
-)
+
+from core.brain.schema import BrainContext, Budget, Headcount, Product, Strategy
+
 
 def test_strategy_minimal():
     s = Strategy(vision="VN SME OS", icp="SME 5-50 NV")

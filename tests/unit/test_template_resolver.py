@@ -1,4 +1,3 @@
-from pathlib import Path
 from core.obsidian.template_resolver import TemplateResolver
 
 

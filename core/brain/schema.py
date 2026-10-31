@@ -1,7 +1,9 @@
 """Pydantic schemas cho Brain layer (00-Brain/*.md)."""
 from __future__ import annotations
+
 from datetime import date
-from typing import Literal, Optional
+from typing import Literal
+
 from pydantic import BaseModel, Field
 
 BusinessStage = Literal["pre-seed", "seed", "growth", "mature", "pivot", "unknown"]
@@ -9,11 +11,11 @@ BusinessStage = Literal["pre-seed", "seed", "growth", "mature", "pivot", "unknow
 
 class Strategy(BaseModel):
     vision: str
-    mission: Optional[str] = None
+    mission: str | None = None
     icp: str = Field(description="Ideal Customer Profile")
-    icp_details: Optional[str] = None
+    icp_details: str | None = None
     yearly_goals: dict[str, str] = Field(default_factory=dict)
-    positioning: Optional[str] = None
+    positioning: str | None = None
 
 
 class Product(BaseModel):
@@ -50,9 +52,9 @@ class Headcount(BaseModel):
 
 class LawReference(BaseModel):
     name: str
-    code: Optional[str] = None
+    code: str | None = None
     scope: str = "general"  # general | industry | local
-    note: Optional[str] = None
+    note: str | None = None
 
 
 class DecisionEntry(BaseModel):
@@ -61,7 +63,7 @@ class DecisionEntry(BaseModel):
     owner: str
     decision: str
     reason: str
-    task_ref: Optional[str] = None
+    task_ref: str | None = None
 
 
 class BrainContext(BaseModel):

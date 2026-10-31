@@ -1,7 +1,7 @@
 """Unit tests for LangGraph conditional routing logic."""
 from core.meeting.conditional_logic import (
-    next_pro_con_node,
     next_perspective_node,
+    next_pro_con_node,
 )
 from core.meeting.debate_state import new_meeting_state
 

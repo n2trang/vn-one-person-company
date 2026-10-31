@@ -1,7 +1,8 @@
 """Integration test: full graph end-to-end with mocked LLM."""
 from unittest.mock import MagicMock
-from core.meeting.meeting_graph import MeetingGraph
+
 from core.meeting.debate_state import new_meeting_state
+from core.meeting.meeting_graph import MeetingGraph
 
 
 def test_meeting_runs_end_to_end_mocked():

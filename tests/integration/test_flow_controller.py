@@ -1,8 +1,9 @@
-from unittest.mock import MagicMock
-from pathlib import Path
 import json
 import shutil
-from core.orchestrator.flow_controller import FlowController, FlowResult, FlowStage
+from pathlib import Path
+from unittest.mock import MagicMock
+
+from core.orchestrator.flow_controller import FlowController, FlowStage
 
 
 def test_flow_pauses_at_clarification_when_gaps_exist(tmp_path):

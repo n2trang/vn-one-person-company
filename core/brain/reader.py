@@ -1,12 +1,20 @@
 """Load 00-Brain/*.md → BrainContext."""
 from __future__ import annotations
+
 import re
 from pathlib import Path
-from core.obsidian.frontmatter import parse as parse_frontmatter
+
 from core.brain.schema import (
-    Strategy, Product, Budget, BudgetLine, Headcount,
-    LawReference, DecisionEntry, BrainContext,
+    BrainContext,
+    Budget,
+    DecisionEntry,
+    Headcount,
+    LawReference,
+    Product,
+    Strategy,
 )
+from core.obsidian.frontmatter import parse as parse_frontmatter
+
 
 class BrainReader:
     # Maps raw state strings from markdown to valid BusinessStage literals

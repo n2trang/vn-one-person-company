@@ -1,8 +1,10 @@
 """Load config from .vncoderc or vncode-config.yaml."""
 from __future__ import annotations
-from pathlib import Path
-from typing import Literal, Optional
+
 import os
+from pathlib import Path
+from typing import Literal
+
 import yaml
 from pydantic import BaseModel, Field
 
@@ -34,7 +36,7 @@ TranslatorMode = Literal["off", "final_only", "all_intermediate"]
 
 
 class Config(BaseModel):
-    vault_path: Optional[str] = None
+    vault_path: str | None = None
     meeting: MeetingConfig = Field(default_factory=MeetingConfig)
     llm: LLMConfig = Field(default_factory=LLMConfig)
     # P1.6: translator scope — default "final_only" giữ behavior cũ
@@ -51,7 +53,7 @@ KNOWN_API_KEYS = [
 ]
 
 
-def load_config(path: Optional[Path] = None) -> Config:
+def load_config(path: Path | None = None) -> Config:
     """Load config from path, ~/.vncoderc, or return defaults."""
     candidates = ([path] if path else []) + [Path.home() / ".vncoderc"]
     for p in candidates:

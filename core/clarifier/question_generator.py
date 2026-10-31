@@ -4,9 +4,11 @@
 🔒 RULE 4: Tiếng Việt, định nghĩa thuật ngữ.
 """
 from __future__ import annotations
-from dataclasses import dataclass, field
+
 import json
 import re
+from dataclasses import dataclass, field
+
 from core.brain.gap_analyzer import Gap, Severity
 
 

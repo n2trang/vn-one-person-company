@@ -1,7 +1,9 @@
 """Append-only decision log for 00-Brain/decisions-log.md."""
 from __future__ import annotations
-from pathlib import Path
+
 import re
+from pathlib import Path
+
 from core.brain.schema import DecisionEntry
 
 

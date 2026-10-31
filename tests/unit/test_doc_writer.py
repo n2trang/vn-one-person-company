@@ -1,4 +1,3 @@
-from pathlib import Path
 from core.obsidian.doc_writer import DocWriter
 
 

@@ -1,12 +1,12 @@
 """Tests for P1.6 — translator_mode config option in Config + _make_translating_collector."""
 from __future__ import annotations
 
+from collections.abc import Callable
+from unittest.mock import MagicMock
+
 import pytest
-from unittest.mock import MagicMock, call
-from pathlib import Path
 
-from core.utils.config import Config, MeetingConfig, LLMConfig
-
+from core.utils.config import Config
 
 # ── Config model ──────────────────────────────────────────────────────────
 
@@ -25,7 +25,7 @@ class TestTranslatorModeConfig:
         assert cfg.translator_mode == "all_intermediate"
 
     def test_rejects_invalid_value(self):
-        with pytest.raises(Exception):
+        with pytest.raises(ValueError):
             Config(translator_mode="invalid_value")
 
     def test_loads_from_dict(self):
@@ -36,7 +36,7 @@ class TestTranslatorModeConfig:
 
     def test_loads_from_dict_missing_field_defaults(self):
         """translator_mode defaults when not in yaml."""
-        cfg = Config(**{"vault_path": "/tmp/vault"})
+        cfg = Config(vault_path="/tmp/vault")
         assert cfg.translator_mode == "final_only"
 
     def test_other_config_fields_unaffected(self):
@@ -57,7 +57,7 @@ class TestMakeTranslatingCollector:
         t.apply = MagicMock(side_effect=lambda text: text + suffix)
         return t
 
-    def _mock_collect(self, perspectives: dict) -> "Callable":
+    def _mock_collect(self, perspectives: dict) -> Callable:
         def _inner(state):
             return {"perspectives": perspectives}
         return _inner

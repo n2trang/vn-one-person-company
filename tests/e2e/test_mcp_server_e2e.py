@@ -8,8 +8,6 @@ import json
 import shutil
 from pathlib import Path
 from unittest.mock import MagicMock
-import pytest
-
 
 REPO = Path(__file__).parent.parent.parent
 FIXTURE = REPO / "tests" / "fixtures" / "techco-vault"
@@ -87,7 +85,7 @@ def test_mcp_full_flow_brief_to_clarification_pause(tmp_path):
     shutil.copytree(FIXTURE, vault)
     (vault / "02-Tasks").mkdir(exist_ok=True)
 
-    ctx, mock_session = _make_ctx([
+    ctx, _mock_session = _make_ctx([
         # Router: COMPLEX
         json.dumps({
             "class": "COMPLEX",

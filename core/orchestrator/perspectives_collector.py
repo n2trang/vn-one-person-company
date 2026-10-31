@@ -4,13 +4,14 @@ P1.1 fix: load per-agent enriched system prompt tu <departments_root>/<dept>/age
 qua AgentLoader. Fallback sang generic PERSPECTIVE_PROMPT neu file missing.
 """
 from __future__ import annotations
+
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
-from core.agents.department import DepartmentLoader
+
 from core.agents.agent_loader import AgentLoader
 from core.agents.base_agent import BaseAgent
+from core.agents.department import DepartmentLoader
 from core.meeting.debate_state import MeetingState
-
 
 PERSPECTIVE_PROMPT = """Ban la phong {dept_name} trong DN VN.
 
@@ -66,8 +67,7 @@ class PerspectivesCollector:
                 executor.submit(self._speak_dept, dept_code, state): dept_code
                 for dept_code in state["departments"]
             }
-            for fut in futures:
-                dept_code = futures[fut]
+            for fut, dept_code in futures.items():
                 try:
                     results[dept_code] = fut.result()
                 except Exception as e:

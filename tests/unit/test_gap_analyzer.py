@@ -1,7 +1,8 @@
-from unittest.mock import MagicMock
 import json
-from core.brain.gap_analyzer import GapAnalyzer, Gap, Severity
-from core.brain.schema import BrainContext, Strategy, Product, Budget, Headcount
+from unittest.mock import MagicMock
+
+from core.brain.gap_analyzer import GapAnalyzer, Severity
+from core.brain.schema import BrainContext, Budget, Headcount, Product, Strategy
 
 
 def _brain():

@@ -1,10 +1,9 @@
 """Unit tests for core/orchestrator/document_executor.py (P0.1)."""
 import textwrap
 from pathlib import Path
-from unittest.mock import MagicMock, patch
+from unittest.mock import MagicMock
 
 import pytest
-
 
 REPO = Path(__file__).parent.parent.parent
 

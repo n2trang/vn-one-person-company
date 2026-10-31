@@ -1,9 +1,9 @@
-from pathlib import Path
-from core.clarifier.question_generator import Question
 from core.brain.gap_analyzer import Severity
 from core.clarifier.clarification_io import (
-    write_clarification, read_answers, AnsweredQuestion,
+    read_answers,
+    write_clarification,
 )
+from core.clarifier.question_generator import Question
 
 
 def test_write_clarification_creates_file(tmp_path):

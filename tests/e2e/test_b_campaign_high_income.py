@@ -6,8 +6,8 @@ import json
 import shutil
 from pathlib import Path
 from unittest.mock import MagicMock
-import pytest
 
+import pytest
 
 REPO = Path(__file__).parent.parent.parent
 FIXTURE = REPO / "tests/fixtures/techco-vault"

@@ -1,7 +1,6 @@
 """Sinh TL;DR (3-5 dòng dân thường) cho output dài."""
 from __future__ import annotations
 
-
 TLDR_PROMPT = """Tóm tắt báo cáo dưới đây thành 3-5 dòng dân thường đọc 30 giây hiểu.
 
 ## Yêu cầu

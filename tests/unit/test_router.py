@@ -1,9 +1,14 @@
-from unittest.mock import MagicMock
 from pathlib import Path
-from core.orchestrator.router import Router, TaskClass
+from unittest.mock import MagicMock
+
 from core.brain.schema import (
-    BrainContext, Strategy, Budget, Headcount, Product,
+    BrainContext,
+    Budget,
+    Headcount,
+    Product,
+    Strategy,
 )
+from core.orchestrator.router import Router, TaskClass
 
 REPO = Path(__file__).parent.parent.parent
 

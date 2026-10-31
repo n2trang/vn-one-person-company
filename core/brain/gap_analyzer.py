@@ -3,10 +3,12 @@
 🔒 RULE 1 enforce: gap PHẢI có citation chỉ về Brain file/section.
 """
 from __future__ import annotations
-from enum import Enum
-from dataclasses import dataclass
+
 import json
 import re
+from dataclasses import dataclass
+from enum import Enum
+
 from core.brain.schema import BrainContext
 
 
