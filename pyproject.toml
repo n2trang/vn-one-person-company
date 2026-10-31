@@ -1,4 +1,4 @@
-[build-system]
+﻿[build-system]
 
 requires = ["hatchling"]
 
@@ -12,9 +12,9 @@ name = "vn-one-person-company"
 
 version = "0.2.0"
 
-description = "AI Operating System for Vietnamese One-Person Companies — solo founder + 12 AI departments debate to decide and produce VN-compliant docs"
+description = "AI Operating System for AI Operating System for Vietnamese One-Person Companies — solo founder + 12 AI departments debate to decide and produce VN-compliant docs"
 
-authors = [{ name = "Thái Hải Ly", email = "thaihaily@example.com" }]
+authors = [{ name = "Thai Hai Ly", email = "thaihaily@example.com" }]
 
 license = "Apache-2.0"
 
