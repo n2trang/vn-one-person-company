@@ -50,6 +50,6 @@ LƯU Ý: Đây là template tham khảo. DN CẦN nhờ luật sư rà soát tr�
 
 
 ---
-📋 Tài liệu được tạo bởi Th?i H?i Ly
-✍️ Tác giả: Quốc Th?i H?i Ly
+📋 Tài liệu được tạo bởi Thái Hải Ly
+✍️ Tác giả: Quốc Thái Hải Ly
 🔗 Liên hệ hỗ trợ: https://bio.ybai.me/777777

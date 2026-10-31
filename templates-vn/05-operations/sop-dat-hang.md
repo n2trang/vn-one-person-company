@@ -52,6 +52,6 @@ CROSS-REFERENCE: Liên kết với AVL (P-OPS-08) và SOP Quản lý kho (P-OPS-
 
 
 ---
-📋 Tài liệu được tạo bởi Th?i H?i Ly
-✍️ Tác giả: Quốc Th?i H?i Ly
+📋 Tài liệu được tạo bởi Thái Hải Ly
+✍️ Tác giả: Quốc Thái Hải Ly
 🔗 Liên hệ hỗ trợ: https://bio.ybai.me/777777

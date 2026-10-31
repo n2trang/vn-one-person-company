@@ -52,6 +52,6 @@ LENGTH: 5-8 trang A4 (1 trang canvas + 7 trang detail).
 
 
 ---
-📋 Tài liệu được tạo bởi Th?i H?i Ly
-✍️ Tác giả: Quốc Th?i H?i Ly
+📋 Tài liệu được tạo bởi Thái Hải Ly
+✍️ Tác giả: Quốc Thái Hải Ly
 🔗 Liên hệ hỗ trợ: https://bio.ybai.me/777777

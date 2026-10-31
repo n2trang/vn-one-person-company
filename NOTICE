@@ -1,27 +1,27 @@
-VN Business OS — VN One Person Company
-Copyright 2026 Th?i H?i Ly
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-
-This product includes work adapted from the following projects:
-
-1. business-builder.plugin
-   - 192 Vietnamese business templates adapted
-
-2. TradingAgents (TauricResearch)
-   https://github.com/TauricResearch/TradingAgents
-   Licensed under Apache License 2.0
-   - Debate engine pattern adapted
-
-3. agency-agents (msitarzewski)
-   https://github.com/msitarzewski/agency-agents
-   - Role definitions referenced
-
-All adaptations and customizations beyond the above sources are
-original work by Th?i H?i Ly and are released
-under the Apache License 2.0.
+VN Business OS — VN One Person Company
+Copyright 2026 Thái Hải Ly
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+
+This product includes work adapted from the following projects:
+
+1. business-builder.plugin
+   - 192 Vietnamese business templates adapted
+
+2. TradingAgents (TauricResearch)
+   https://github.com/TauricResearch/TradingAgents
+   Licensed under Apache License 2.0
+   - Debate engine pattern adapted
+
+3. agency-agents (msitarzewski)
+   https://github.com/msitarzewski/agency-agents
+   - Role definitions referenced
+
+All adaptations and customizations beyond the above sources are
+original work by Thái Hải Ly and are released
+under the Apache License 2.0.

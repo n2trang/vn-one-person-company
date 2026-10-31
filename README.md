@@ -244,7 +244,7 @@ Xem [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## 📄 License
 
-**Apache License 2.0** — © 2026 Th?i H?i Ly
+**Apache License 2.0** — © 2026 Thái Hải Ly
 
 Xem [LICENSE](LICENSE) cho full text và [NOTICE](NOTICE) cho attribution chi tiết.
 

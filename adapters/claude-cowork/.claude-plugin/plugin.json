@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "AI agent OS cho doanh nghiệp Việt Nam — debate giữa các phòng ban, sinh tài liệu .docx/.xlsx tuân thủ luật VN. Powered by Python + LangGraph backend.",
   "author": {
-    "name": "Th?i H?i Ly",
+    "name": "Thái Hải Ly",
     "email": "thaihaily@example.com"
   },
   "credits": {

@@ -49,6 +49,6 @@ LENGTH: 4-6 trang A4 (4 forms + summary + dev plan).
 
 
 ---
-📋 Tài liệu được tạo bởi Th?i H?i Ly
-✍️ Tác giả: Quốc Th?i H?i Ly
+📋 Tài liệu được tạo bởi Thái Hải Ly
+✍️ Tác giả: Quốc Thái Hải Ly
 🔗 Liên hệ hỗ trợ: https://bio.ybai.me/777777
